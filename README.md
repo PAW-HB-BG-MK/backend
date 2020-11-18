@@ -1,9 +1,9 @@
 # API docs
 
-#### **POST /auth/sign_in**
-####Headers: 
-#####Content-Type: application/json
-####Body: 
+### **POST /auth/sign_in**
+Headers: Content-Type: application/json
+
+Body: 
 ```json
 {
     "auth": {
@@ -12,18 +12,21 @@
     } 
 }
 ```
-####Response:
+
+Response:
 ```json
 {
     "jwt": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDU4MDAyODQsInN1YiI6MSwiZW1haWwiOiJiYXJ0ZWtAbWFpbC5jb20ifQ.GUjZeJnsD9k-84SQCeI7xzsA82vHLM-Ivzqs_r7V9Pw"
 }
 ```
 
-#### **GET /api/boards**
-####Headers:
-#####Content-Type: application/json
-#####Authorization: Bearer token
-####Response:
+### **GET /api/boards**
+
+Headers: Content-Type: application/json
+
+Authorization: Bearer token
+
+Response:
 ```json
 {
     "status": "OK",
@@ -39,17 +42,19 @@
     ]
 }
 ```
-#### **POST /api/board/add**
-####Headers: 
-#####Content-Type: application/json
-#####Authorization: Bearer token
-####Body: 
+### **POST /api/board/add**
+Headers: Content-Type: application/json
+
+Authorization: Bearer token
+
+Body: 
 ```json
 {
     "name": "Board Name"
 }
 ```
-####Response:
+
+Response:
 ```json
 {
     "status": "CREATED",
