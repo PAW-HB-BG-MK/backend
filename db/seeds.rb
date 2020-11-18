@@ -7,4 +7,20 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Pong.create({pong: 'PONG'})
-User.create(email: "bartek@mail.com", password: "1234")
+user = User.create(email: "bartek@mail.com", password: "1234")
+user.boards.create(name: "project B 1")
+user.boards.create(name: "project B 2")
+user.boards.create(name: "project B 3")
+user.boards.create(name: "project B 4")
+
+user = User.create(email: "michal@mail.com", password: "zeed")
+user.boards.create(name: "project M 1")
+user.boards.create(name: "project M 2")
+user.boards.create(name: "project M 3")
+
+user = User.create(email: "hubert@mail.com", password: "123")
+user.boards.create(name: "project H 1")
+user.boards.create(name: "project H 2")
+
+
+
