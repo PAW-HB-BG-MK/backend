@@ -7,3 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Pong.create({pong: 'PONG'})
+User.create(email: "bartek@mail.com", password: "1234")
