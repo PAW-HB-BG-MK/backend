@@ -135,15 +135,30 @@ Body:
 Response:
 ```json
 {
-    "status": "OK",
-    "message": "Returning board",
-    "data": {
-        "id": 1,
-        "name": "project B 2",
-        "user_id": 1,
-        "created_at": "2020-11-18T13:05:17.533Z",
-        "updated_at": "2020-11-18T13:05:17.533Z"
-    }
+    "id": 1,
+    "name": "project B 1",
+    "user_id": 1,
+    "created_at": "2020-12-02T19:17:30.535Z",
+    "updated_at": "2020-12-02T19:17:30.535Z",
+    "lists": [
+        {
+            "id": 1,
+            "name": "lista 1",
+            "board_id": 1,
+            "created_at": "2020-12-02T19:18:09.358Z",
+            "updated_at": "2020-12-02T19:18:09.358Z",
+            "cards": [
+                {
+                    "id": 1,
+                    "name": "karta testowa",
+                    "description": "karta swtorzona w celach testowych",
+                    "list_id": 1,
+                    "created_at": "2020-12-02T19:49:02.772Z",
+                    "updated_at": "2020-12-02T19:49:02.772Z"
+                }
+            ]
+        }
+    ]
 }
 ```
 lub
@@ -153,6 +168,75 @@ lub
     "message": "You do not have rights or board does not exist"
 }
 ```
+
+### **POST /api/list/add**
+Headers: Content-Type: application/json
+
+Authorization: Bearer token
+
+Body: 
+```json
+{
+    "id": 1,
+    "name": "lista 3"
+}
+```
+id: ID of board to add list to
+
+Response:
+```json
+{
+    "status": "OK",
+    "message": "List created"
+}
+```
+lub 
+```json
+{
+    "status": "ERROR",
+    "message": "You do not have rights or board does not exist"
+}
+```
+
+### **POST /api/card/add**
+Headers: Content-Type: application/json
+
+Authorization: Bearer token
+
+Body: 
+```json
+{
+    "id": 1,
+    "list_id": 1,
+    "name": "karta testowa",
+    "description": "karta swtorzona w celach testowych"
+}
+```
+id: ID of board to get list from
+list_id: ID of list to add card to
+
+Response:
+```json
+{
+    "status": "CREATED",
+    "message": "Card created"
+}
+```
+lub 
+```json
+{
+    "status": "ERROR",
+    "message": "You do not have rights or board does not exist"
+}
+```
+lub 
+```json
+{
+    "status": "ERROR",
+    "message": "You do not have rights or list does not exist"
+}
+```
+
 
 
 
