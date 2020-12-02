@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     post '/board/edit', to: 'boards#edit_board'
     get '/board', to: 'boards#get_board'
     post '/list/add', to: 'lists#add_list'
+    post '/card/add', to: 'cards#add_card'
   end
   namespace 'api' do
     namespace 'v1' do
