@@ -36,11 +36,8 @@ Body:
 Response:
 ```json
 {
-    "id": 1,
-    "email": "email@mail.com",
-    "created_at": "2020-12-02T17:51:54.656Z",
-    "updated_at": "2020-12-02T17:51:54.656Z",
-    "password_digest": "$2a$12$xt7MdzZ5tefJwter8/VRyeAWcdFkCJW4LbAW7AHARX7Db7b9KiFCy"
+    "status": "CREATED",
+    "message": "User created"
 }
 ```
 
