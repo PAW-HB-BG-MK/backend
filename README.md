@@ -36,11 +36,8 @@ Body:
 Response:
 ```json
 {
-    "id": 1,
-    "email": "email@mail.com",
-    "created_at": "2020-12-02T17:51:54.656Z",
-    "updated_at": "2020-12-02T17:51:54.656Z",
-    "password_digest": "$2a$12$xt7MdzZ5tefJwter8/VRyeAWcdFkCJW4LbAW7AHARX7Db7b9KiFCy"
+    "status": "CREATED",
+    "message": "User created"
 }
 ```
 
@@ -92,6 +89,34 @@ Response:
             "updated_at": "2020-11-18T13:05:17.839Z"
         }
     ]
+}
+```
+
+### **POST /api/board/edit**
+Headers: Content-Type: application/json
+
+Authorization: Bearer token
+
+Body: 
+```json
+{
+    "id": 1,
+    "name": "Testowa zmiana"
+}
+```
+
+Response:
+```json
+{
+    "status": "UPDATED",
+    "message": "Board updated"
+}
+```
+lub
+```json
+{
+    "status": "UNAUTHORIZED",
+    "message": "This board does not belong to you"
 }
 ```
 

@@ -21,4 +21,15 @@ class BoardsController < ApplicationController
     render json: {status: 'CREATED', message: 'Returning current boards', data:user.boards}
   end
 
+  def edit_board
+    header_value = request.authorization
+    user = get_user(header_value)
+    board = user.boards.find_by(id:params[:id])
+    if board != nil
+      board.update_attribute(:name, params[:name])
+      render json: {status: 'UPDATED', message: 'Board updated'}
+    else
+      render json: {status: 'UNAUTHORIZED', message: 'This board does not belong to you'}
+    end
+  end
 end
