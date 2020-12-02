@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   scope '/auth' do
     post '/sign_in', to: 'user_token#create'
+    post '/sign_up', to: 'users#create'
   end
   scope '/api' do
     get '/boards', to: 'boards#get_boards'
