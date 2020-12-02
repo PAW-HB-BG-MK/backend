@@ -92,5 +92,33 @@ Response:
 }
 ```
 
+### **POST /api/board/edit**
+Headers: Content-Type: application/json
+
+Authorization: Bearer token
+
+Body: 
+```json
+{
+    "id": 1,
+    "name": "Testowa zmiana"
+}
+```
+
+Response:
+```json
+{
+    "status": "UPDATED",
+    "message": "Board updated"
+}
+```
+lub
+```json
+{
+    "status": "UNAUTHORIZED",
+    "message": "This board does not belong to you"
+}
+```
+
 
 
