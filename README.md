@@ -20,6 +20,30 @@ Response:
 }
 ```
 
+### **POST /auth/sign_up**
+Headers: Content-Type: application/json
+
+Body: 
+```json
+{
+	"user": {
+		"email": "email@mail.com",
+        "password": "1234"
+	}
+}
+```
+
+Response:
+```json
+{
+    "id": 1,
+    "email": "email@mail.com",
+    "created_at": "2020-12-02T17:51:54.656Z",
+    "updated_at": "2020-12-02T17:51:54.656Z",
+    "password_digest": "$2a$12$xt7MdzZ5tefJwter8/VRyeAWcdFkCJW4LbAW7AHARX7Db7b9KiFCy"
+}
+```
+
 ### **GET /api/boards**
 
 Headers: Content-Type: application/json
