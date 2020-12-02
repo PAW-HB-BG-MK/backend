@@ -120,5 +120,39 @@ lub
 }
 ```
 
+### **GET /api/board**
+Headers: Content-Type: application/json
+
+Authorization: Bearer token
+
+Body: 
+```json
+{
+    "id": 1
+}
+```
+
+Response:
+```json
+{
+    "status": "OK",
+    "message": "Returning board",
+    "data": {
+        "id": 1,
+        "name": "project B 2",
+        "user_id": 1,
+        "created_at": "2020-11-18T13:05:17.533Z",
+        "updated_at": "2020-11-18T13:05:17.533Z"
+    }
+}
+```
+lub
+```json
+{
+    "status": "ERROR",
+    "message": "You do not have rights or board does not exist"
+}
+```
+
 
 

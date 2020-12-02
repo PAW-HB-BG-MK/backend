@@ -13,6 +13,17 @@ class BoardsController < ApplicationController
     render json: {status: 'OK', message: 'Returning boards', data:boards}
   end
 
+  def get_board
+    header_value = request.authorization
+    user = get_user(header_value)
+    board = user.boards.find_by(id:params[:id])
+    if board != nil
+      render json: {status: 'OK', message: 'Returning board', data:board}
+    else
+      render json: {status: 'ERROR', message: 'You do not have rights or board does not exist'}
+    end
+  end
+
   def add_board
     header_value = request.authorization
     user = get_user(header_value)
