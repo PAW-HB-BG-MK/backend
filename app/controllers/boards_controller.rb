@@ -18,7 +18,7 @@ class BoardsController < ApplicationController
     user = get_user(header_value)
     board = user.boards.find_by(id:params[:id])
     if board != nil
-      render json: {status: 'OK', message: 'Returning board', data:board}
+      render :json => board.to_json(include: {lists: {include: :cards}})
     else
       render json: {status: 'ERROR', message: 'You do not have rights or board does not exist'}
     end
