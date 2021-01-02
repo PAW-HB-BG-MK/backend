@@ -29,4 +29,23 @@ class ListsController < ApplicationController
       render json: {status: 'ERROR', message: 'You do not have rights or board does not exist'}
     end
   end
+  def edit_list_name
+    header_value = request.authorization
+    user = get_user(header_value)
+    board = user.boards.find_by(id:params[:id])
+    if board != nil
+      list = board.lists.where(id:params[:list_id]).first
+      if list != nil
+        list.update_attribute(:name, params[:name])
+        list.save
+        user.save
+        render json: {status: 'OK', message: 'List name updated'}
+      else
+        render json: {status: 'ERROR', message: 'You do not have rights or list does not exist'}
+      end
+
+    else
+      render json: {status: 'ERROR', message: 'You do not have rights or board does not exist'}
+    end
+  end
 end

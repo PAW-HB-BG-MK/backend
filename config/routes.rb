@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     post '/card/add', to: 'cards#add_card'
     post '/card/remove', to: 'cards#remove_card'
     post '/list/remove', to: 'lists#remove_list'
+    post '/list/edit/name', to: 'lists#edit_list_name'
   end
   namespace 'api' do
     namespace 'v1' do

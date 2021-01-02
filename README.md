@@ -287,7 +287,7 @@ Body:
     "list_id": 1
 }
 ```
-id: ID of board to add list to
+id: ID of board to remove list from
 list_id: ID of list to remove
 
 Response:
@@ -302,6 +302,44 @@ lub
 {
     "status": "ERROR",
     "message": "You do not have rights or board does not exist"
+}
+```
+
+### **POST /api/list/edit/name**
+Headers: Content-Type: application/json
+
+Authorization: Bearer token
+
+Body: 
+```json
+{
+    "id": 1,
+    "list_id": 1,
+    "name": "new list name"
+}
+```
+id: ID of board to edit list from
+list_id: ID of list to edit
+
+Response:
+```json
+{
+    "status": "OK",
+    "message": "List updated"
+}
+```
+lub 
+```json
+{
+    "status": "ERROR",
+    "message": "You do not have rights or board does not exist"
+}
+```
+lub 
+```json
+{
+    "status": "ERROR",
+    "message": "You do not have rights or list does not exist"
 }
 ```
 
