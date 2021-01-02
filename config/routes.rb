@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get '/board', to: 'boards#get_board'
     post '/list/add', to: 'lists#add_list'
     post '/card/add', to: 'cards#add_card'
+    post '/card/remove', to: 'cards#remove_card'
   end
   namespace 'api' do
     namespace 'v1' do
