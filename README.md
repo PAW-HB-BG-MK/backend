@@ -556,3 +556,50 @@ lub
 }
 ```
 
+### **POST /api/list/change_order**
+Headers: Content-Type: application/json
+
+Authorization: Bearer token
+
+Body: 
+```json
+{
+    "id": 1,
+    "list_id": 1,
+    "position": 2
+}
+```
+id: ID of board to get list from
+list_id: ID of list to archive 
+position: new list position
+
+
+Response:
+```json
+{
+    "status": "OK",
+    "message": "List position updated"
+}
+```
+lub
+```json
+{
+    "status": "OK",
+    "message": "List position unchanged"
+}
+```
+lub 
+```json
+{
+    "status": "ERROR",
+    "message": "You do not have rights or board does not exist"
+}
+```
+lub 
+```json
+{
+    "status": "ERROR",
+    "message": "You do not have rights or list does not exist"
+}
+```
+
