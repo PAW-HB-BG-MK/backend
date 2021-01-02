@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     post '/list/add', to: 'lists#add_list'
     post '/card/add', to: 'cards#add_card'
     post '/card/remove', to: 'cards#remove_card'
+    post '/card/edit', to: 'cards#edit_card'
     post '/list/remove', to: 'lists#remove_list'
     post '/list/edit/name', to: 'lists#edit_list_name'
   end

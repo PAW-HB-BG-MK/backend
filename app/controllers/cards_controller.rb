@@ -39,4 +39,31 @@ class CardsController < ApplicationController
       render json: {status: 'ERROR', message: 'You do not have rights or board does not exist'}
     end
   end
+  def edit_card
+    header_value = request.authorization
+    user = get_user(header_value)
+    board = user.boards.find_by(id:params[:id])
+    if board != nil
+      list = board.lists.find_by(id:params[:list_id])
+      if list != nil
+        card = list.cards.where(id:params[:card_id]).first
+        if card != nil
+          if params[:name].present?
+            card.update_attribute(:name, params[:name])
+          end
+          if params[:description].present?
+            card.update_attribute(:description, params[:description])
+          end
+          user.save
+          render json: {status: 'OK', message: 'Card updated'}
+        else
+          render json: {status: 'ERROR', message: 'You do not have rights or card does not exist'}
+        end
+      else
+        render json: {status: 'ERROR', message: 'You do not have rights or list does not exist'}
+      end
+    else
+      render json: {status: 'ERROR', message: 'You do not have rights or board does not exist'}
+    end
+  end
 end
