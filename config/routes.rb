@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get '/board', to: 'boards#get_board'
     post '/list/add', to: 'lists#add_list'
     post '/list/change_archive_status', to: 'lists#change_list_archive_status'
+    post '/list/change_order', to: 'lists#change_list_order'
     post '/card/add', to: 'cards#add_card'
     post '/card/remove', to: 'cards#remove_card'
     post '/card/change_archive_status', to: 'cards#change_card_archive_status'
