@@ -56,7 +56,6 @@ Response:
         {
             "id": 1,
             "name": "Board Name",
-            "user_id": 1,
             "created_at": "2020-11-18T13:05:17.839Z",
             "updated_at": "2020-11-18T13:05:17.839Z"
         }
@@ -84,7 +83,6 @@ Response:
         {
             "id": 1,
             "name": "Board Name",
-            "user_id": 1,
             "created_at": "2020-11-18T13:05:17.839Z",
             "updated_at": "2020-11-18T13:05:17.839Z"
         }
@@ -137,7 +135,6 @@ Response:
 {
     "id": 1,
     "name": "project B 1",
-    "user_id": 1,
     "created_at": "2020-12-02T19:17:30.535Z",
     "updated_at": "2020-12-02T19:17:30.535Z",
     "lists": [
@@ -439,6 +436,37 @@ lub
 {
     "status": "ERROR",
     "message": "You do not have rights or card does not exist"
+}
+```
+
+
+### **POST /api/board/add_user**
+Headers: Content-Type: application/json
+
+Authorization: Bearer token
+
+Body: 
+```json
+{
+    "email": "person@mail.com",
+    "board_id": 1
+}
+```
+email: mail of user you want to add to your table
+board_id: id of board you want to add user to
+
+Response:
+```json
+{
+    "status": "OK",
+    "message": "User assigned"
+}
+```
+lub 
+```json
+{
+    "status": "UNAUTHORIZED",
+    "message": "This board does not belong to you or does not exist"
 }
 ```
 

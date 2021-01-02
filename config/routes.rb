@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get '/boards', to: 'boards#get_boards'
     post '/board/add', to: 'boards#add_board'
     post '/board/edit', to: 'boards#edit_board'
+    post '/board/add_user', to: 'boards#add_user_to_board'
     get '/board', to: 'boards#get_board'
     post '/list/add', to: 'lists#add_list'
     post '/card/add', to: 'cards#add_card'

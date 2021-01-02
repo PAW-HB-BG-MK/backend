@@ -9,7 +9,7 @@ class BoardsController < ApplicationController
   def get_boards
     header_value = request.authorization
     user = get_user(header_value)
-    boards = Board.where(user_id:user.id)
+    boards = user.boards
     render json: {status: 'OK', message: 'Returning boards', data:boards}
   end
 
@@ -39,6 +39,20 @@ class BoardsController < ApplicationController
     if board != nil
       board.update_attribute(:name, params[:name])
       render json: {status: 'UPDATED', message: 'Board updated'}
+    else
+      render json: {status: 'UNAUTHORIZED', message: 'This board does not belong to you'}
+    end
+  end
+
+  def add_user_to_board
+    user_to_add = User.find_by(email:params[:email])
+    header_value = request.authorization
+    user = get_user(header_value)
+    board = user.boards.find_by(id:params[:board_id])
+    if board != nil
+      user_to_add.boards << board
+      user_to_add.save
+      render json: {status: 'OK', message: 'User assigned'}
     else
       render json: {status: 'UNAUTHORIZED', message: 'This board does not belong to you'}
     end
