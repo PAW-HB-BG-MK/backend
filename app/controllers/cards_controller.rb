@@ -22,4 +22,21 @@ class CardsController < ApplicationController
       render json: {status: 'ERROR', message: 'You do not have rights or board does not exist'}
     end
   end
+  def remove_card
+    header_value = request.authorization
+    user = get_user(header_value)
+    board = user.boards.find_by(id:params[:id])
+    if board != nil
+      list = board.lists.find_by(id:params[:list_id])
+      if list != nil
+        list.cards.where(id:params[:card_id]).first.destroy
+        user.save
+        render json: {status: 'OK', message: 'Card deleted'}
+      else
+        render json: {status: 'ERROR', message: 'You do not have rights or list does not exist'}
+      end
+    else
+      render json: {status: 'ERROR', message: 'You do not have rights or board does not exist'}
+    end
+  end
 end

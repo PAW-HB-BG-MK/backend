@@ -237,6 +237,45 @@ lub
 }
 ```
 
+### **POST /api/card/remove**
+Headers: Content-Type: application/json
+
+Authorization: Bearer token
+
+Body: 
+```json
+{
+    "id": 1,
+    "list_id": 1,
+    "card_id": 1
+}
+```
+id: ID of board to get list from
+list_id: ID of list to remove card from
+card_id: ID of card to delete
+
+Response:
+```json
+{
+    "status": "OK",
+    "message": "Card deleted"
+}
+```
+lub 
+```json
+{
+    "status": "ERROR",
+    "message": "You do not have rights or board does not exist"
+}
+```
+lub 
+```json
+{
+    "status": "ERROR",
+    "message": "You do not have rights or list does not exist"
+}
+```
+
 
 
 
