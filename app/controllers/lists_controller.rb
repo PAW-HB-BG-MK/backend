@@ -17,4 +17,16 @@ class ListsController < ApplicationController
       render json: {status: 'ERROR', message: 'You do not have rights or board does not exist'}
     end
   end
+  def remove_list
+    header_value = request.authorization
+    user = get_user(header_value)
+    board = user.boards.find_by(id:params[:id])
+    if board != nil
+      board.lists.where(id:params[:list_id]).first.destroy
+      user.save
+      render json: {status: 'OK', message: 'List deleted'}
+    else
+      render json: {status: 'ERROR', message: 'You do not have rights or board does not exist'}
+    end
+  end
 end
