@@ -393,4 +393,53 @@ lub
 }
 ```
 
+### **POST /api/card/edit/deadline**
+Headers: Content-Type: application/json
+
+Authorization: Bearer token
+
+Body: 
+```json
+{
+    "id": 1,
+    "list_id": 1,
+    "card_id": 1,
+    "deadline": 1609608100
+}
+```
+id: ID of board to get list from
+list_id: ID of list to remove card from
+card_id: ID of card to delete
+
+deadline: unix timestamp
+
+Response:
+```json
+{
+    "status": "OK",
+    "message": "Card deadline updated"
+}
+```
+lub 
+```json
+{
+    "status": "ERROR",
+    "message": "You do not have rights or board does not exist"
+}
+```
+lub 
+```json
+{
+    "status": "ERROR",
+    "message": "You do not have rights or list does not exist"
+}
+```
+lub 
+```json
+{
+    "status": "ERROR",
+    "message": "You do not have rights or card does not exist"
+}
+```
+
 
