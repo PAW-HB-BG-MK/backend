@@ -602,4 +602,67 @@ lub
     "message": "You do not have rights or list does not exist"
 }
 ```
+### **GET /api/card/events**
+Headers: Content-Type: application/json
+
+Authorization: Bearer token
+
+Body: 
+```json
+{
+    "id": 1,
+    "list_id": 1,
+    "card_id": 1
+}
+```
+id: ID of board to get list from
+list_id: ID of list to get card from
+card_id: ID of card to get events from
+
+Response:
+```json
+{
+    "status": "OK",
+    "message": "Returning events",
+    "data": [
+        {
+            "id": 1,
+            "name": "created",
+            "timestamp": 1609624414,
+            "card_id": 1,
+            "created_at": "2021-01-02T21:53:34.321Z",
+            "updated_at": "2021-01-02T21:53:34.321Z"
+        },
+        {
+            "id": 2,
+            "name": "archived",
+            "timestamp": 1609624490,
+            "card_id": 1,
+            "created_at": "2021-01-02T21:54:50.211Z",
+            "updated_at": "2021-01-02T21:54:50.211Z"
+        }
+    ]
+}
+```
+lub 
+```json
+{
+    "status": "ERROR",
+    "message": "You do not have rights or board does not exist"
+}
+```
+lub 
+```json
+{
+    "status": "ERROR",
+    "message": "You do not have rights or list does not exist"
+}
+```
+lub
+```json
+{
+    "status": "ERROR",
+    "message": "You do not have rights or card does not exist"
+}
+```
 

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     post '/card/remove', to: 'cards#remove_card'
     post '/card/change_archive_status', to: 'cards#change_card_archive_status'
     post '/card/edit', to: 'cards#edit_card'
+    get '/card/events', to: 'cards#get_card_events'
     post '/card/edit/deadline', to: 'cards#set_card_deadline'
     post '/list/remove', to: 'lists#remove_list'
     post '/list/edit/name', to: 'lists#edit_list_name'

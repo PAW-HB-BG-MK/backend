@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_02_204351) do
+ActiveRecord::Schema.define(version: 2021_01_02_213705) do
 
   create_table "boards", force: :cascade do |t|
     t.string "name"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 2021_01_02_204351) do
     t.integer "deadline"
     t.boolean "archived"
     t.index ["list_id"], name: "index_cards_on_list_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.integer "timestamp"
+    t.integer "card_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["card_id"], name: "index_events_on_card_id"
   end
 
   create_table "lists", force: :cascade do |t|
@@ -60,5 +69,6 @@ ActiveRecord::Schema.define(version: 2021_01_02_204351) do
   end
 
   add_foreign_key "cards", "lists"
+  add_foreign_key "events", "cards"
   add_foreign_key "lists", "boards"
 end
