@@ -12,7 +12,7 @@ class CardsController < ApplicationController
     if board != nil
       list = board.lists.find_by(id:params[:list_id])
       if list != nil
-        list.cards.create(name: params[:name], description: params[:description])
+        list.cards.create(name: params[:name], description: params[:description], archived: false)
         user.save
         render json: {status: 'CREATED', message: 'Card created'}
       else
@@ -78,6 +78,28 @@ class CardsController < ApplicationController
           card.update_attribute(:deadline, params[:deadline])
           user.save
           render json: {status: 'OK', message: 'Card deadline updated'}
+        else
+          render json: {status: 'ERROR', message: 'You do not have rights or card does not exist'}
+        end
+      else
+        render json: {status: 'ERROR', message: 'You do not have rights or list does not exist'}
+      end
+    else
+      render json: {status: 'ERROR', message: 'You do not have rights or board does not exist'}
+    end
+  end
+  def change_card_archive_status
+    header_value = request.authorization
+    user = get_user(header_value)
+    board = user.boards.find_by(id:params[:id])
+    if board != nil
+      list = board.lists.find_by(id:params[:list_id])
+      if list != nil
+        card = list.cards.where(id:params[:card_id]).first
+        if card != nil
+          card.update_attribute(:archived, !card.archived)
+          user.save
+          render json: {status: 'OK', message: 'Card status updated'}
         else
           render json: {status: 'ERROR', message: 'You do not have rights or card does not exist'}
         end

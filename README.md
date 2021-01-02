@@ -439,7 +439,6 @@ lub
 }
 ```
 
-
 ### **POST /api/board/add_user**
 Headers: Content-Type: application/json
 
@@ -470,4 +469,90 @@ lub
 }
 ```
 
+### **POST /api/list/change_archive_status**
+Headers: Content-Type: application/json
+
+Authorization: Bearer token
+
+Body: 
+```json
+{
+    "id": 1,
+    "list_id": 1
+}
+```
+id: ID of board to get list from
+list_id: ID of list to archive 
+
+Changes archived status to opposite one (all cards included)
+
+Response:
+```json
+{
+    "status": "OK",
+    "message": "List status updated"
+}
+```
+lub 
+```json
+{
+    "status": "ERROR",
+    "message": "You do not have rights or board does not exist"
+}
+```
+lub 
+```json
+{
+    "status": "ERROR",
+    "message": "You do not have rights or list does not exist"
+}
+```
+
+### **POST /api/card/change_archive_status**
+Headers: Content-Type: application/json
+
+Authorization: Bearer token
+
+Body: 
+```json
+{
+    "id": 1,
+    "list_id": 1,
+    "card_id": 1
+}
+```
+id: ID of board to get list from
+list_id: ID of list to archive card from 
+card_id: ID of card to archive
+
+Changes archived status to opposite one
+
+Response:
+```json
+{
+    "status": "OK",
+    "message": "Card status updated"
+}
+```
+lub 
+```json
+{
+    "status": "ERROR",
+    "message": "You do not have rights or board does not exist"
+}
+```
+lub 
+```json
+{
+    "status": "ERROR",
+    "message": "You do not have rights or list does not exist"
+}
+```
+lub
+```json
+{
+    "status": "ERROR",
+    "message": "You do not have rights or card does not exist"
+}
+```
 
