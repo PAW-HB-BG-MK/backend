@@ -123,12 +123,8 @@ Headers: Content-Type: application/json
 
 Authorization: Bearer token
 
-Body: 
-```json
-{
-    "id": 1
-}
-```
+Params:
+id: id of board you want to get info about
 
 Response:
 ```json
@@ -607,16 +603,11 @@ Headers: Content-Type: application/json
 
 Authorization: Bearer token
 
-Body: 
-```json
-{
-    "id": 1,
-    "list_id": 1,
-    "card_id": 1
-}
-```
+Params:
 id: ID of board to get list from
+
 list_id: ID of list to get card from
+
 card_id: ID of card to get events from
 
 Response:
