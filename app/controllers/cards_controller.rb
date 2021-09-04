@@ -3,7 +3,7 @@ class CardsController < ApplicationController
   def get_user(jwt)
     # jwt = jwt[7..-1]
     # decoded_token = JWT.decode jwt, Rails.application.credentials.secret_key_base, true, { :algorithm => 'HS256' }
-    User.find_by(email:(decoded_token[0])['email'])
+    User.find_by(email:current_user['email'])
   end
   def add_card
     header_value = request.authorization
