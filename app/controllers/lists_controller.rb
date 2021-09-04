@@ -40,6 +40,9 @@ class ListsController < ApplicationController
           list.update_attribute(:order, list.order - 1)
         end
       end
+      target_list.cards.each do |card|
+        card.destroy
+      end
       target_list.destroy
       user.save
       render json: {status: 'OK', message: 'List deleted'}
@@ -98,6 +101,7 @@ class ListsController < ApplicationController
       if target_list != nil
         if target_list.order == params[:position]
           render json: {status: 'OK', message: 'List position unchanged'}
+          return
         elsif target_list.order > params[:position]
           board.lists.each do |list|
             if list.order < target_list.order && list.order >= params[:position]
