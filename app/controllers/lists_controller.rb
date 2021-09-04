@@ -1,8 +1,8 @@
 class ListsController < ApplicationController
   before_action :authenticate_user
   def get_user(jwt)
-    jwt = jwt[7..-1]
-    decoded_token = JWT.decode jwt, Rails.application.credentials.secret_key_base, true, { :algorithm => 'HS256' }
+    # jwt = jwt[7..-1]
+    # decoded_token = JWT.decode jwt, Rails.application.credentials.secret_key_base, true, { :algorithm => 'HS256' }
     User.find_by(email:(decoded_token[0])['email'])
   end
   def add_list
